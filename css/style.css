@@ -1,0 +1,425 @@
+/* Font Style */
+@font-face {
+    font-family: 'pixel font' ;
+    src: url(../Font/slkscr-webfont.woff) format(woff);
+}
+
+
+
+body, html {
+    background-image: url(../Picture/katana.gif);
+     background-repeat:no-repeat;
+     background-position: center;
+     height: 100%;
+     width: 100%;
+     background-size: cover;     
+}
+
+/* Navbar */
+
+
+.navbar {
+    background-color: lightblue;
+    box-shadow: -1px 5px 10px purple;
+    border-radius: 45px;
+    height: 80px;
+    width: 100%;
+    background-image: url(../Picture/cyberpunk.jpg);
+    background-position: 15%;
+}
+
+
+.nama a {
+    text-decoration: none;
+    font: 30px/16px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 5px blue, 2px 2px 2px white;
+    
+}
+
+.nama {
+
+    margin-top: -50px;
+    margin-left: 80px;
+    
+
+}
+
+
+
+.home a {
+    
+    font: 25px/16px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 3px blue, 2px 2px 2px white;
+    text-decoration: none;
+}
+
+.home {
+
+    margin-left: 500px;
+    margin-top: -20px;
+
+}
+
+.about a {
+
+    font: 25px/16px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 3px blue, 2px 2px 2px white;
+    text-decoration: none;
+
+
+
+}
+
+.about {
+
+    margin-left: 700px;
+    margin-top: -20px;
+
+}
+
+.contact a {
+
+    font: 25px/16px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 3px blue, 2px 2px 2px white;
+    text-decoration: none;
+
+
+}
+
+.contact {
+
+    
+    margin-left: 890px;
+    margin-top: -20px;
+
+}
+
+.gif {
+
+    height: 84px;
+    width: 210px;
+    border-radius: 35px;
+    margin-left: 1146px;
+    margin-top: -53px;
+
+}
+
+.nama a:hover {
+
+    color: white;
+    border-radius: 16px;
+
+}
+
+.home a:hover {
+
+    color: white;
+    border-radius: 16px;
+
+
+}
+
+.about a:hover {
+
+    color: white;
+    border-radius: 16px;
+ 
+
+}   
+
+.contact a:hover {
+
+    color: white;
+    border-radius: 16px;
+ 
+
+}
+
+.nav {
+
+    position: fixed;
+    display: inline-block;
+}
+
+.welcome {
+ 
+    position: relative;
+    display: inline-block;
+    margin-left: 550px;
+    margin-top: 250px;
+    font: 30px/40px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 3px blue, 7px 5px 2px white;
+
+}
+
+.profil {
+
+    box-shadow: 5px 2px 5px blue, -5px 2px 5px purple;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    height: 500px;
+    width: 990px;
+    margin-left: 200px;
+    margin-top: 100px; 
+    border-radius: 50px;
+    background-image: url(../Picture/5199419.jpg);
+    animation: move 1s forwards;
+
+}
+
+.profil h1 {
+
+    margin-left: 15px;
+    text-align: left;
+    color: rgb(1, 1, 97) ;
+    text-shadow: 3px 1px 4px white;
+    font: 50px/40px 'pixel font', arial, sans-serif;
+
+
+}
+
+.profil p {
+
+    color: darkblue;
+    margin-left: 15px;
+    text-align: left;
+    text-shadow: -2px 3px 5px white;
+    font: 30px/20px 'pixel font', arial, sans-serif;
+
+}
+
+.profilcontact {
+
+    box-shadow: 5px 2px 5px blue, -5px 2px 5px purple;
+    position: relative;
+    display: inline-block;
+    background-color: white;
+    height: 500px;
+    width: 990px;
+    margin-left: 200px;
+    margin-top: 100px; 
+    border-radius: 50px;
+    background-image: url(../Picture/5199419.jpg);
+    animation: move 1s forwards;
+
+
+}
+
+.imagecontact {
+
+    box-shadow:  -10px 1px 5px purple, 5px 1px 5px blue;
+    border-radius: 50%;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: 400px;
+    margin-top: 10px;
+
+}
+
+.image {
+
+    box-shadow:  -10px 1px 5px purple, 5px 1px 5px blue;
+    border-radius: 50%;
+    position: absolute;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-left: 750px;
+    margin-top: -350px;
+
+
+}
+
+.instagram {
+
+    position: absolute;
+    display: inline-block;
+    height: 80px;
+    width: 80px;
+    margin-top: -260px;
+    margin-left: 550px;
+    animation: move2 1s forwards;
+    
+
+
+}
+
+.tiktok {
+
+    position: absolute;
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+    margin-top: -150px;
+    margin-left: 550px;
+    animation: move2 1s forwards; 
+
+}
+
+
+
+.ig {
+
+    position: absolute;
+    display: inline-block;
+    font: 30px/40px 'pixel font', arial, sans-serif;
+    color: purple;
+    text-shadow: 5px 2px 3px blue, 5px 2px 2px white;
+    margin-left: 630px;
+    margin-top: -245px;
+    animation: move3 1s forwards; 
+
+    
+
+
+}
+
+.toktok {
+
+    position: absolute;
+    display: inline-block;
+    font: 30px/40px 'pixel font', arial, sans-serif;
+    color: white;
+    text-shadow: 5px 2px 3px black, 5px 2px 2px blue;
+    margin-left: 630px;
+    margin-top: -135px;
+    animation: move3 1s forwards; 
+
+}
+
+.audio {
+
+    position: absolute;
+    display: inline-block;
+    margin-left: 380px;
+    margin-top: 20px;
+    opacity: 0%;
+
+}
+
+.audioabout {
+
+    position: absolute;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 88px;
+    opacity: 0%;
+
+}
+
+.audiomain {
+
+    position: absolute;
+    display: inline-block;
+    margin-left: 360px;
+    margin-top: 10px;
+    width: 88px;
+    opacity: 0%;
+ 
+
+}
+
+.audiocontact {
+
+    position: absolute;
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 88px;
+    opacity: 0%;
+
+
+}
+
+/* Animasi */
+
+.selamat {
+
+    animation: fade1 .5ms infinite ;
+
+}
+
+.selamat {
+
+    opacity: 0%;
+
+}
+
+
+
+
+
+
+/* Key Frame */
+@keyframes fade1 {
+
+        0% {
+            
+            opacity: 0;
+        }
+    
+        100% {
+    
+           
+            opacity: 1;
+    
+        }
+    
+}
+
+@keyframes move {
+
+        0% {
+
+            margin-left: -9999px;
+
+        }
+
+        100% {
+
+            margin-left: 200px;
+
+        }
+
+}
+
+@keyframes move2 {
+    0% {
+
+    margin-left: -9999px;
+
+}
+
+100% {
+
+    margin-left: 550px;
+
+}
+
+}
+
+@keyframes move3 {
+
+    0% {
+
+        margin-left: -9999px;
+    
+    }
+    
+    100% {
+    
+        margin-left: 630px;
+    
+    }
+    
+
+}
