@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4FRENSTORE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #585252;
+            text-align: center;
+        }
+        .header {
+            background: #463f3f;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header h3 {
+            color: white;
+        }
+        .header img {
+            width: 80px;
+            height: auto;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .item {
+            background: #fff;
+            margin: 10px;
+            padding: 10px;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .item:hover {
+            z-index: 10;
+            transform: scale(1.2);
+            background-color: grey;
+        }
+        #searchBar {
+            width: 80%;
+            padding: 10px;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+        }
+        #noResults {
+            display: none;
+            font-size: 18px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo.png" alt="4FrenStore Logo">
+        <h3>4FrenStore</h3>
+        
+    </div>
+    
+    <input type="text" id="searchBar" placeholder="Cari berdasarkan kode..." onkeyup="searchItems()">
+    <div id="noResults">Kode nomor tidak ada!!!</div>
+    
+    <div class="container" id="productContainer">
+        <div class="item" data-code="001">
+            <a href="https://id.shp.ee/7JXWjUF" target="_blank"><img src="outfit 1.jpeg" alt="Kaos 1"></a>
+            <div class="price">001</div>
+        </div>
+        <div class="item" data-code="002">
+            <a href="https://id.shp.ee/3bSr4un" target="_blank"><img src="outfit 2.jpeg" alt="Kaos 2"></a>
+            <div class="price">002</div>
+        </div>
+        <div class="item" data-code="003">
+            <a href="https://id.shp.ee/7JXWjUF" target="_blank"><img src="Outfit 3.jpeg" alt="Kaos 3"></a>
+            <div class="price">003</div>
+        </div>
+        <div class="item" data-code="004">
+            <a href="https://id.shp.ee/vEE5gLQ" target="_blank"><img src="outfit 4.jpeg" alt="Kaos 4"></a>
+            <div class="price">004</div>
+        </div>
+        <div class="item" data-code="005">
+            <a href="https://id.shp.ee/n99e8uY" target="_blank"><img src="outfit 5.jpeg" alt="Kaos 5"></a>
+            <div class="price">005</div>
+        </div>
+        <div class="item" data-code="006">
+            <a href="https://id.shp.ee/WMyJBuc" target="_blank"><img src="Outfit 6.jpeg" alt="Kaos 6"></a>
+            <div class="price">006</div>
+        </div>
+    </div>
+
+    <script>
+        function searchItems() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let items = document.querySelectorAll('.item');
+            let found = false;
+            
+            items.forEach(item => {
+                let code = item.getAttribute('data-code');
+                if (code.includes(input)) {
+                    item.style.display = 'block';
+                    found = true;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('noResults').style.display = found ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
