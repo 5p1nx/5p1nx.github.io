@@ -13,6 +13,12 @@
                 text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff;
             }
         }
+
+        @keyframes rotateLogo {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
     
         body {
             font-family: Arial, sans-serif;
@@ -36,8 +42,14 @@
         .header img {
             width: 80px;
             height: auto;
-            
+            transition: transform 0.5s;
         }
+
+        .header img:hover {
+            animation: rotateLogo 1s linear infinite;
+
+        }
+
         .container {
             width: 90%;
             margin: auto;
