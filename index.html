@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4FRENSTORE</title>
     <style>
+         @keyframes neon {
+            0%, 100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+            }
+            50% {
+                text-shadow: 0 0 2px #fff, 0 0 5px #fff, 0 0 10px #fff;
+            }
+        }
+    
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,6 +30,8 @@
         }
         .header h3 {
             color: white;
+            font-size: 24px;
+            animation: neon 1.5s infinite alternate;
         }
         .header img {
             width: 80px;
