@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4FRENSTORE</title>
     <style>
-         @keyframes neon {
+        @keyframes neon {
             0%, 100% {
                 text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
             }
@@ -18,8 +18,7 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
-    
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -33,11 +32,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         .header h3 {
             color: white;
             font-size: 24px;
             animation: neon 1.5s infinite alternate;
+            margin-left: 10px;
         }
         .header img {
             width: 80px;
@@ -47,7 +48,33 @@
 
         .header img:hover {
             animation: rotateLogo 1s linear infinite;
+        }
 
+        .menu-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+        }
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 50px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .dropdown-menu a:hover {
+            background: #ddd;
         }
 
         .container {
@@ -75,9 +102,7 @@
             margin-top: 10px;
         }
         .item:hover {
-            z-index: 10;
             transform: scale(1.2);
-            background-color: white;
             box-shadow: 0px 0px 50px black;
         }
         #searchBar {
@@ -91,8 +116,7 @@
         #noResults {
             display: none;
             font-size: 18px;
-            color: rgb(255, 0, 0);
-            text-align: center;
+            color: red;
         }
     </style>
 </head>
@@ -100,55 +124,88 @@
     <div class="header">
         <img src="logo.png" alt="4FrenStore Logo">
         <h3>4FrenStore</h3>
-        
+        <div class="menu-button" onclick="toggleMenu()">&#x22EE;</div>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <a href="#" onclick="filterCategory('baju')">Baju</a>
+            <a href="#" onclick="filterCategory('celana')">Celana</a>
+        </div>
     </div>
     
     <input type="text" id="searchBar" placeholder="Cari berdasarkan kode..." onkeyup="searchItems()">
     <div id="noResults">Kode nomor tidak ada!!!</div>
     
+    <!-- Baju -->
     <div class="container" id="productContainer">
-        <div class="item" data-code="001">
-            <a href="https://id.shp.ee/7JXWjUF" target="_blank"><img src="outfit 1.jpeg" alt="Kaos 1"></a>
-            <div class="price">001</div>
+        <div class="item" data-code="001" data-category="baju">
+            <a href="#"><img src="outfit 1.jpeg" alt="baju 1"></a>
+            <div class="kode">001</div>
         </div>
-        <div class="item" data-code="002">
-            <a href="https://id.shp.ee/3bSr4un" target="_blank"><img src="outfit 2.jpeg" alt="Kaos 2"></a>
-            <div class="price">002</div>
+        <div class="item" data-code="002" data-category="baju">
+            <a href="#"><img src="outfit 2.jpeg" alt="baju 2"></a>
+            <div class="kode">002</div>
         </div>
-        <div class="item" data-code="003">
-            <a href="https://id.shp.ee/7JXWjUF" target="_blank"><img src="Outfit 3.jpeg" alt="Kaos 3"></a>
-            <div class="price">003</div>
+        <div class="item" data-code="003" data-category="baju">
+            <a href="#"><img src="Outfit 3.jpeg" alt="baju 3"></a>
+            <div class="kode">003</div>
         </div>
-        <div class="item" data-code="004">
-            <a href="https://id.shp.ee/vEE5gLQ" target="_blank"><img src="outfit 4.jpeg" alt="Kaos 4"></a>
-            <div class="price">004</div>
+        <div class="item" data-code="004" data-category="baju">
+            <a href="#"><img src="outfit 4.jpeg" alt="baju 4"></a>
+            <div class="kode">004</div>
         </div>
-        <div class="item" data-code="005">
-            <a href="https://id.shp.ee/n99e8uY" target="_blank"><img src="outfit 5.jpeg" alt="Kaos 5"></a>
-            <div class="price">005</div>
+        <div class="item" data-code="005" data-category="baju">
+            <a href="#"><img src="outfit 5.jpeg" alt="baju 5"></a>
+            <div class="kode">005</div>
         </div>
-        <div class="item" data-code="006">
-            <a href="https://id.shp.ee/WMyJBuc" target="_blank"><img src="Outfit 6.jpeg" alt="Kaos 6"></a>
-            <div class="price">006</div>
+        <div class="item" data-code="006" data-category="baju">
+            <a href="#"><img src="Outfit 6.jpeg" alt="baju 6"></a>
+            <div class="kode">006</div>
         </div>
+                                    <!-- Celana -->
     </div>
 
     <script>
-        function searchItems() {
-            let input = document.getElementById('searchBar').value.toLowerCase();
+        let selectedCategory = 'baju';
+
+        function toggleMenu() {
+            let menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        }
+
+        function filterCategory(category) {
+            selectedCategory = category;
             let items = document.querySelectorAll('.item');
-            let found = false;
-            
+
             items.forEach(item => {
-                let code = item.getAttribute('data-code');
-                if (code.includes(input)) {
+                if (item.getAttribute('data-category') === category) {
                     item.style.display = 'block';
-                    found = true;
                 } else {
                     item.style.display = 'none';
                 }
             });
-            
+
+            document.getElementById("searchBar").value = "";
+            document.getElementById("noResults").style.display = "none";
+        }
+
+        function searchItems() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let items = document.querySelectorAll('.item');
+            let found = false;
+
+            items.forEach(item => {
+                let code = item.getAttribute('data-code');
+                let category = item.getAttribute('data-category');
+
+                if (category === selectedCategory) {
+                    if (code.includes(input)) {
+                        item.style.display = 'block';
+                        found = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+
             document.getElementById('noResults').style.display = found ? 'none' : 'block';
         }
     </script>
