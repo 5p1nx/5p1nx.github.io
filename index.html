@@ -56,25 +56,46 @@
             color: white;
             padding: 10px;
             position: absolute;
-            right: 10px;
+            left: 10px;
         }
-        .dropdown-menu {
-            display: none;
+        
+        /* Sidebar Styling */
+        .sidebar {
+            height: 100%;
+            width: 230px;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            background: #333;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 20px;
+        }
+        .sidebar .close-btn {
             position: absolute;
-            right: 10px;
-            top: 50px;
-            background: white;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            top: 10px;
+            left: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: white; /* Warna putih */
         }
-        .dropdown-menu a {
-            display: block;
+        .sidebar hr {
+        border: 0;
+        height: 2px;
+        background: white;
+        opacity: 50%;
+        width: 100%; /* Memenuhi sidebar */
+        margin: 20px 0; /* Memberi ruang atas dan bawah */
+    }
+        .sidebar a {
             padding: 10px;
             text-decoration: none;
-            color: black;
-        }
-        .dropdown-menu a:hover {
-            background: #ddd;
+            font-size: 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px; /* Digeser ke bawah */
         }
 
         .container {
@@ -124,8 +145,10 @@
     <div class="header">
         <img src="logo.png" alt="4FrenStore Logo">
         <h3>4FrenStore</h3>
-        <div class="menu-button" onclick="toggleMenu()">&#x22EE;</div>
-        <div class="dropdown-menu" id="dropdownMenu">
+        <div class="menu-button" onclick="openSidebar()">☰</div>
+        <div class="sidebar" id="sidebar">
+            <span class="close-btn" onclick="closeSidebar()">×</span>
+            <hr>
             <a href="#" onclick="filterCategory('baju')">Baju</a>
             <a href="#" onclick="filterCategory('celana')">Celana</a>
         </div>
@@ -134,7 +157,6 @@
     <input type="text" id="searchBar" placeholder="Cari berdasarkan kode..." onkeyup="searchItems()">
     <div id="noResults">Kode nomor tidak ada!!!</div>
     
-    <!-- Baju -->
     <div class="container" id="productContainer">
         <div class="item" data-code="001" data-category="baju">
             <a href="https://id.shp.ee/WMyJBuc" target="_blank"><img src="outfit 1.jpeg" alt="baju 1"></a>
@@ -160,27 +182,25 @@
             <a href="https://id.shp.ee/7JXWjUF" target="_blank"><img src="Outfit 6.jpeg" alt="baju 6"></a>
             <div class="kode">006</div>
         </div>
-                                    <!-- Celana -->
     </div>
 
     <script>
         let selectedCategory = 'baju';
 
-        function toggleMenu() {
-            let menu = document.getElementById("dropdownMenu");
-            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        function openSidebar() {
+            document.getElementById("sidebar").style.left = "0";
         }
-
+        
+        function closeSidebar() {
+            document.getElementById("sidebar").style.left = "-250px";
+        }
+        
         function filterCategory(category) {
             selectedCategory = category;
             let items = document.querySelectorAll('.item');
 
             items.forEach(item => {
-                if (item.getAttribute('data-category') === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
+                item.style.display = item.getAttribute('data-category') === category ? 'block' : 'none';
             });
 
             document.getElementById("searchBar").value = "";
@@ -197,12 +217,8 @@
                 let category = item.getAttribute('data-category');
 
                 if (category === selectedCategory) {
-                    if (code.includes(input)) {
-                        item.style.display = 'block';
-                        found = true;
-                    } else {
-                        item.style.display = 'none';
-                    }
+                    item.style.display = code.includes(input) ? 'block' : 'none';
+                    found = found || code.includes(input);
                 }
             });
 
